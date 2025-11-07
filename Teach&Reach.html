@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teach & Reach — SkillSwap Platform</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#6ee7b7;
+      --muted:#93a3b8;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --max-width:1100px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg, #061026 0%, #071227 40%, #071026 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+      flex-wrap:wrap;
+    }
+    .logo{
+      display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;
+    }
+    .logo-mark{
+      width:44px;height:44px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#3dd5c6);
+      display:flex;align-items:center;justify-content:center;
+      color:#04202a;font-weight:800;font-size:18px;
+      box-shadow:0 6px 18px rgba(12,20,30,0.6);
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{
+      background:linear-gradient(90deg,var(--accent),#34c7aa);
+      color:#04202a;padding:10px 14px;border-radius:10px;font-weight:700;
+      text-decoration:none;
+    }
+
+    /* mobile menu toggle */
+    .menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      color:var(--accent);
+      font-size:26px;
+      cursor:pointer;
+    }
+    @media (max-width:720px){
+      nav{display:none;width:100%;flex-direction:column;align-items:flex-start;margin-top:10px}
+      nav.active{display:flex;}
+      .menu-toggle{display:block;}
+      header{align-items:flex-start;}
+    }
+
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;margin-bottom:32px;
+    }
+    .hero .title{font-size:34px;font-weight:800;line-height:1.02;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 20px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn-outline{border:1px solid rgba(255,255,255,0.08);padding:10px 14px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:700}
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 6px 30px rgba(2,8,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .feature-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .feature{background:var(--card);padding:14px;border-radius:12px}
+    .feature h4{margin:0 0 6px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    .how{display:flex;gap:16px;margin-top:26px;flex-wrap:wrap}
+    .step{flex:1;background:var(--glass);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .step h5{margin:0 0 8px}
+
+    .right-panel{display:flex;flex-direction:column;gap:14px}
+    .signup{display:flex;flex-direction:column;gap:10px}
+    .input{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);padding:12px;border-radius:10px;color:inherit;width:100%}
+    .signup .btn{background:linear-gradient(90deg,var(--accent),#39d3b6);padding:12px;border-radius:10px;border:none;font-weight:700;color:#04202a;cursor:pointer;width:100%}
+
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+    .testimonial{padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px}
+
+    footer{margin-top:40px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px;flex-wrap:wrap}
+    footer a{color:var(--muted);text-decoration:none}
+
+    /* responsive adjustments */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .feature-list{grid-template-columns:repeat(2,1fr)}
+      .cards{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      :root{--max-width:420px}
+      .feature-list{grid-template-columns:1fr}
+      .hero .title{font-size:26px}
+      .cta,.btn-outline{width:100%;text-align:center}
+    }
+
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;background:rgba(255,255,255,0.02);border-radius:999px;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">T&R</div>
+        <div>
+          <div>Teach & Reach</div>
+          <div style="font-size:12px;color:var(--muted);font-weight:600">SkillSwap for campuses</div>
+        </div>
+      </div>
+
+      <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">☰</button>
+
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#signup">Sign Up</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1 class="title">Teach & Reach — Share knowledge, elevate skills</h1>
+          <p>A peer-to-peer skill exchange platform for university students. Teach, learn, earn points, and grow within the community.</p>
+
+          <div class="actions">
+            <a class="cta" href="#signup">Get Started</a>
+            <a class="btn-outline" href="#features">See Details</a>
+          </div>
+
+          <div class="card" style="margin-top:22px">
+            <strong>Highlights</strong>
+            <div class="feature-list">
+              <div class="feature">
+                <h4>Quick Matching</h4>
+                <p>Find peer mentors who fit your learning goals.</p>
+              </div>
+              <div class="feature">
+                <h4>Point System</h4>
+                <p>Teach and earn points, use them to learn new skills.</p>
+              </div>
+              <div class="feature">
+                <h4>Secure Feedback</h4>
+                <p>Rate and review sessions to improve continuously.</p>
+              </div>
+            </div>
+
+            <div class="how">
+              <div class="step">
+                <h5>1. Create a Profile</h5>
+                <p class="muted">Add your skills and topics you want to learn.</p>
+              </div>
+              <div class="step">
+                <h5>2. Match</h5>
+                <p class="muted">Connect with others who share your interests.</p>
+              </div>
+              <div class="step">
+                <h5>3. Exchange</h5>
+                <p class="muted">Teach lessons, earn points, and learn from others.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="right-panel">
+          <div class="card">
+            <strong>Sign Up in Seconds</strong>
+            <p class="muted">Register with your university email. Safe and verified community learning.</p>
+
+            <form id="signup" class="signup" onsubmit="event.preventDefault();alert('Signup simulation: form submitted.')">
+              <input class="input" type="text" placeholder="Full Name" required />
+              <input class="input" type="email" placeholder="university@student.edu" required />
+              <input class="input" type="text" placeholder="Skill to learn or teach" />
+              <button class="btn" type="submit">Join & Start Now</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <strong>Community Voices</strong>
+            <div class="cards">
+              <div class="testimonial">
+                <strong>Saruhan, Computer Engineering</strong>
+                <p class="muted">"I teach front-end development and took math lessons in return — great balance!"</p>
+              </div>
+              <div class="testimonial">
+                <strong>Çınar, Electrical Electronical Engineer</strong>
+                <p class="muted">"Small group sessions helped me improve my presentation skills."</p>
+              </div>
+              <div class="testimonial">
+                <strong>Öykü, Interior Architect</strong>
+                <p class="muted">"I teach home architecture design."</p>
+              </div>
+              <div class="testimonial">
+                <strong>Ecren, English Literature</strong>
+                <p class="muted">"I give a lecture about English literature."</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" style="margin-top:10px">
+        <div class="card">
+          <h3>Features</h3>
+          <p class="muted">Teach & Reach is a secure, interactive skill exchange platform designed for university students.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:14px">
+            <div class="pill">Campus Verification</div>
+            <div class="pill">Point-Based System</div>
+            <div class="pill">Group & One-on-One Sessions</div>
+            <div class="pill">Feedback & Ratings</div>
+            <div class="pill">Calendar & Booking</div>
+            <div class="pill">Mobile Friendly</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" style="margin-top:18px">
+        <div class="card">
+          <h3>How It Works</h3>
+          <p class="muted">A simple workflow example:</p>
+          <ol class="muted" style="padding-left:18px">
+            <li>Sign up and add your skills.</li>
+            <li>Search for topics you want to learn or accept matches.</li>
+            <li>Schedule, complete your session, and exchange feedback.</li>
+            <li>Earn points and gain community reputation.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:18px">
+        <div class="card">
+          <h3>Contact</h3>
+          <p class="muted">For collaboration or demo requests, send us a message.</p>
+          <form onsubmit="event.preventDefault();alert('Message sent (simulation).')">
+            <input class="input" placeholder="Your Name" required />
+            <input class="input" placeholder="Email" required />
+            <textarea class="input" placeholder="Your Message" rows="4"></textarea>
+            <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+              <button class="btn" type="submit">Send</button>
+              <a class="btn-outline" href="#">Request Demo</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© 2025 Teach & Reach — SkillSwap Project</div>
+      <div>
+        <a href="#">Privacy</a> · <a href="#">Terms of Use</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple menu toggle for mobile
+    const menuButton = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    menuButton.addEventListener('click', () => nav.classList.toggle('active'));
+  </script>
+</body>
+</html>
